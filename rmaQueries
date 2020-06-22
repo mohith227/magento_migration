@@ -1,0 +1,34 @@
+select * from eav_attribute where attribute_code="resolution" \G;
+
+INSERT INTO magento_rma_item_eav_attribute(attribute_id, is_visible, input_filter, multiline_count, validate_rules, is_system, sort_order, data_model)VALUES(268, 1, NULL, 0, '[]', 0, 90, NULL);
+
+INSERT INTO magento_rma_item_form_attribute(form_code, attribute_id)VALUES('default', 268);
+
+manage labels: Exchange,Refund,Store Credit
+
+------------------------------------------------------------------------------------------------------
+ select * from eav_attribute where attribute_code="condition" \G;
+
+INSERT INTO magento_rma_item_eav_attribute(attribute_id, is_visible, input_filter, multiline_count, validate_rules, is_system, sort_order, data_model)VALUES(269, 1, NULL, 0, '[]', 0, 100, NULL);
+
+INSERT INTO magento_rma_item_form_attribute(form_code, attribute_id)VALUES('default', 269);
+
+manage labels: Unopened,Opened,Damaged
+
+-------------------------------------------------------------------------------------------------------
+select * from eav_attribute where attribute_code="reason" \G;
+
+INSERT INTO magento_rma_item_eav_attribute(attribute_id, is_visible, input_filter, multiline_count, validate_rules, is_system, sort_order, data_model)VALUES(270, 1, NULL, 0, '[]', 0, 110, NULL);
+
+INSERT INTO magento_rma_item_form_attribute(form_code, attribute_id)VALUES('default', 270);
+
+manage labels: Wrong Color,Wrong Size,Out of Service
+
+------------------------------------------------------------------------------------------------------
+select * from eav_attribute where attribute_code="reason_other" \G;
+
+INSERT INTO magento_rma_item_eav_attribute(attribute_id, is_visible, input_filter, multiline_count, validate_rules, is_system, sort_order, data_model)VALUES(271, 1, NULL, 0, '[]', 0, 120, NULL);
+
+INSERT INTO magento_rma_item_form_attribute(form_code, attribute_id)VALUES('default', 271);
+
+-------------------------------------------------------------------------------------------------------

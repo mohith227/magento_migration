@@ -1,0 +1,21 @@
+Config migration
+
+bin/magento migrate:settings -r -a vendor/magento/data-migration-tool/etc/opensource-to-commerce/1.9.3.4/config.xml
+
+in core_config_data table delete offloade row
+
+delete from core_config_data where path like "%offloade%";
+
+-----------------------------------------------------------------------------------------------------------------------------
+Data migration
+
+bin/magento migrate:data -r -a vendor/magento/data-migration-tool/etc/opensource-to-commerce/1.9.3.4/config.xml > pub/data-migrate-mohit-2.log &
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+bin/magento setup:install --base-url=https://abf-dev.codilar.in/ --db-host=abf-dev-mysql --db-name=abf_m2 --db-user=root --db-password=root --admin-firstname=Mohith --admin-lastname=N --admin-email=mohith@codilar.com --admin-user=admin --admin-password=mohith@123 --language=en_US --currency=INR --timezone=Asia/Kolkata --use-rewrites=1 --backend-frontname=admin --cleanup-database
+
+
+bin/magento setup:install --base-url=https://abf-dev.codilar.in/ --db-host=abf-dev-mysql --db-name=abf_m2 --db-user=root --db-password=root --admin-firstname=Mohith --admin-lastname=N --admin-email=mohith@codilar.com --admin-user=admin --admin-password=mohith@123 --language=en_US --currency=INR --timezone=Asia/Kolkata --use-rewrites=1 --backend-frontname=admin
+
+bin/magento setup:install --base-url=https://abf2.codilar.in/ --db-host=abf2-mysql --db-name=abf2_m2_new --db-user=root --db-password=root --admin-firstname=Mohith --admin-lastname=N --admin-email=mohith@codilar.com --admin-user=admin --admin-password=admin123 --language=en_US --currency=INR --timezone=Asia/Kolkata --use-rewrites=1 --backend-frontname=admin --cleanup-database

@@ -1,0 +1,43 @@
+Write table data to file
+
+with out tagalys
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 amasty_amshopby_cms_page amasty_amshopby_filter_setting bss_catalog_product_option_type_image magiczoomplus_config ves_all_license ves_megamenu_item ves_megamenu_menu ves_megamenu_menu_customergroup ves_megamenu_menu_log ves_megamenu_menu_store plumbase_product plumrocket_estimateddelivery_order_item core_config_data cms_block cms_block_store cms_page cms_page_store theme catalog_product_option catalog_product_option_price catalog_product_option_title catalog_product_option_type_price catalog_product_option_type_title catalog_product_option_type_value catalog_product_entity_text catalog_category_product_cl catalog_product_attribute_cl catalog_product_category_cl catalog_product_price_cl cataloginventory_stock_cl catalogrule_product_cl catalogrule_rule_cl catalogsearch_fulltext_cl customer_dummy_cl design_config_dummy_cl inventory_cl salesrule_rule_cl targetrule_product_rule_cl targetrule_rule_product_cl catalog_product_entity_varchar catalog_product_entity_media_gallery catalog_product_entity_media_gallery_value_to_entity catalog_product_entity_media_gallery_value catalog_product_entity_media_gallery_value_video > table_data.sql
+
+with tagalys
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 amasty_amshopby_cms_page amasty_amshopby_filter_setting bss_catalog_product_option_type_image magiczoomplus_config ves_all_license ves_megamenu_item ves_megamenu_menu ves_megamenu_menu_customergroup ves_megamenu_menu_log ves_megamenu_menu_store plumbase_product plumrocket_estimateddelivery_order_item core_config_data cms_block cms_block_store cms_page cms_page_store theme catalog_product_option catalog_product_option_price catalog_product_option_title catalog_product_option_type_price catalog_product_option_type_title catalog_product_option_type_value catalog_product_entity_text catalog_category_product_cl catalog_product_attribute_cl catalog_product_category_cl catalog_product_price_cl cataloginventory_stock_cl catalogrule_product_cl catalogrule_rule_cl catalogsearch_fulltext_cl customer_dummy_cl design_config_dummy_cl inventory_cl salesrule_rule_cl catalog_product_entity_media_gallery catalog_product_entity_media_gallery_value_to_entity catalog_product_entity_media_gallery_value catalog_product_entity_media_gallery_value_video targetrule_product_rule_cl targetrule_rule_product_cl catalog_product_entity_varchar tagalys_category tagalys_config tagalys_mpagescache tagalys_queue  > table_data.sql
+
+zip -r tables.zip tables
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Category Queries
+
+-> To select is Anchor
+
+SELECT * FROM eav_attribute where attribute_code = 'is_anchor';
+
+UPDATE `catalog_category_entity_int` set value = 1 where attribute_id = 51 and parent_id <> 0;
+
+->For 2 columns with left bar
+
+select entity_type_id from eav_entity_type WHERE entity_type_code = 'catalog_category';//3
+
+select attribute_id from eav_attribute WHERE entity_type_id = [value from above query] AND attribute_code = 'page_layout';//61
+
+SELECT * FROM catalog_category_entity_varchar WHERE attribute_id = [value from attribute query];
+
+INSERT into catalog_category_entity_varchar (entity_type_id, attribute_id, store_id, entity_id, value) VALUES ([entity_type_id], [attribute_id], [store ID], [subcategory_id], '[layout name]';
+
+-----------------------------------------------------------------------------------------------------------------------------
+mage plaza blogs
+
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26  mageplaza_blog_author mageplaza_blog_category mageplaza_blog_comment mageplaza_blog_comment_like mageplaza_blog_post mageplaza_blog_post_category mageplaza_blog_post_history mageplaza_blog_post_like mageplaza_blog_post_product mageplaza_blog_post_tag mageplaza_blog_post_topic mageplaza_blog_post_traffic mageplaza_blog_tag mageplaza_blog_topic mageplaza_productattachments_file mageplaza_productattachments_file_product mageplaza_productattachments_log > mageplaza_data.sql
+---------------------------------------------------------------------------------------------------------
+customer and sales data
+
+
+mysqldump -u root -proot -h abf2-mysql abf2_m2_new customer_address_entity customer_address_entity_datetime customer_address_entity_decimal customer_address_entity_int customer_address_entity_text customer_address_entity_varchar customer_eav_attribute customer_eav_attribute_website customer_entity customer_entity_datetime customer_entity_decimal customer_entity_int customer_entity_text customer_entity_varchar customer_form_attribute customer_grid_flat customer_group customer_log customer_visitor magento_customerbalance magento_customerbalance_history magento_customercustomattributes_sales_flat_order magento_customercustomattributes_sales_flat_order_address magento_customercustomattributes_sales_flat_quote magento_customercustomattributes_sales_flat_quote_address magento_customersegment_customer magento_customersegment_event magento_customersegment_segment magento_customersegment_website magento_sales_creditmemo_grid_archive magento_sales_invoice_grid_archive magento_sales_order_grid_archive  magento_sales_shipment_grid_archive magento_salesrule_filter sequence_salesrule quote quote_address quote_address_item quote_id_mask quote_item quote_item_option quote_payment quote_preview quote_shipping_rate sales_bestsellers_aggregated_daily sales_bestsellers_aggregated_monthly sales_bestsellers_aggregated_yearly sales_creditmemo  sales_creditmemo_comment sales_creditmemo_grid sales_creditmemo_item sales_invoice sales_invoice_comment sales_invoice_grid sales_invoice_item sales_invoiced_aggregated sales_invoiced_aggregated_order sales_order sales_order_address sales_order_aggregated_created sales_order_aggregated_updated sales_order_grid sales_order_item sales_order_payment sales_order_status sales_order_status_history sales_order_status_label sales_order_status_state sales_order_tax sales_order_tax_item sales_payment_transaction sales_refunded_aggregated sales_refunded_aggregated_order sales_sequence_meta sales_sequence_profile sales_shipment sales_shipment_comment sales_shipment_grid sales_shipment_item sales_shipment_track sales_shipping_aggregated sales_shipping_aggregated_order salesrule salesrule_coupon salesrule_coupon_aggregated salesrule_coupon_aggregated_order salesrule_coupon_aggregated_updated salesrule_coupon_usage salesrule_customer salesrule_customer_group salesrule_label salesrule_product_attribute salesrule_website wishlist  wishlist_item wishlist_item_option > customerandsales.sql
+
+

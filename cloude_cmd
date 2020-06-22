@@ -1,0 +1,41 @@
+mysqldump -h abf-dev-mysql --user=root --password=root --single-transaction --triggers abf2_feb26 | gzip - > database.sql.gz
+
+rsync -azvP database.sql.gz ssh rqs4f42klynya-integration1-hjhkewq--mymagento@ssh.us-5.magento.cloud:/tmp
+
+zcat /tmp/database.sql.gz | mysql -h <database_host> -u <username> -p<password> <database name>
+
+zcat /tmp/database.sql.gz | mysql -h database.internal -u user main
+
+
+mysqldump -h abf-dev-mysql --user=root --password=root --single-transaction --triggers abf2_feb26 | sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' | gzip > database_no-definer.sql.gz
+
+
+https://integration1-hjhkewq-rqs4f42klynya.us-5.magentosite.cloud/
+
+bin/magento setup:store-config:set --base-url="https://integration1-hjhkewq-rqs4f42klynya.us-5.magentosite.cloud/" && bin/magento setup:store-config:set --base-url-secure="https://integration1-hjhkewq-rqs4f42klynya.us-5.magentosite.cloud/"
+
+rsync -azvP test.zip ssh rqs4f42klynya-integration1-hjhkewq--mymagento@ssh.us-5.magento.cloud:pub/media/
+
+
+----------------------------------------------------------------------------------------------------------------
+
+magento-cloud auth:password-login
+
+magento-cloud environment:push -q
+
+magento-cloud environment:ssh
+
+magento-cloud environment:deploy
+
+
+--------------------------------------------------------------------------------------------------------
+mysqldump -h abf-dev-mysql --user=root --password=root --single-transaction abf_apr17  | sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' | gzip > /tmp/database_no-definer.sql.gz
+
+rsync -azvP database_no-definer.sql.gz ssh rqs4f42klynya-integration1-hjhkewq--mymagento@ssh.us-5.magento.cloud:/tmp
+
+zcat /tmp/database_no-definer.sql.gz | mysql -h database.internal -u user main
+
+
+rsync -azvP database_no-definer.sql.gz ssh rqs4f42klynya-staging-5em2ouy--mymagento@ssh.us-5.magento.cloud:/tmp
+
+

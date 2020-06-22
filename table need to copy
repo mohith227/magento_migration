@@ -1,0 +1,66 @@
+bin/magento setup:store-config:set --base-url="https://abf.codilar.in/" && bin/magento setup:store-config:set --base-url-secure="https://abf.codilar.in/"
+
+bin/magento setup:store-config:set --base-url="https://abf2.codilar.in/" && bin/magento setup:store-config:set --base-url-secure="https://abf2.codilar.in/"
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Write table data to file
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 amasty_amshopby_cms_page > amasty_amshopby_cms_page.sql
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 amasty_amshopby_filter_setting > amasty_amshopby_filter_setting.sql
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 bss_catalog_product_option_type_image > bss_catalog_product_option_type_image.sql
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 magiczoomplus_config > magiczoomplus_config.sql
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 ves_all_license > ves_all_license.sql
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 ves_megamenu_item > ves_megamenu_item.sql
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 ves_megamenu_menu > ves_megamenu_menu.sql
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 ves_megamenu_menu_customergroup > ves_megamenu_menu_customergroup.sql
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 ves_megamenu_menu_log > ves_megamenu_menu_log.sql
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 ves_megamenu_menu_store > ves_megamenu_menu_store.sql
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 plumbase_product > plumbase_product.sql
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 plumrocket_estimateddelivery_order_item > plumrocket_estimateddelivery_order_item.sql
+
+mysqldump -u root -proot -h abf2-mysql abf_dev_feb26 core_config_data > core_config_data.sql
+
+zip -r tables.zip tables
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+write file data to table
+
+
+mysqldump -u root -proot -h abf-dev-mysql abf2_feb26 amasty_amshopby_cms_page < amasty_amshopby_cms_page.sql
+
+mysqldump -u root -proot -h abf-dev-mysql abf2_feb26 amasty_amshopby_filter_setting < amasty_amshopby_filter_setting.sql
+
+mysqldump -u root -proot -h abf-dev-mysql abf2_feb26 bss_catalog_product_option_type_image < bss_catalog_product_option_type_image.sql
+
+mysqldump -u root -proot -h abf-dev-mysql abf2_feb26 magiczoomplus_config < magiczoomplus_config.sql
+
+mysqldump -u root -proot -h abf-dev-mysql abf2_feb26 ves_all_license < ves_all_license.sql
+
+mysqldump -u root -proot -h abf-dev-mysql abf2_feb26 ves_megamenu_item < ves_megamenu_item.sql
+
+mysqldump -u root -proot -h abf-dev-mysql abf2_feb26 ves_megamenu_menu < ves_megamenu_menu.sql
+
+mysqldump -u root -proot -h abf-dev-mysql abf2_feb26 ves_megamenu_menu_customergroup < ves_megamenu_menu_customergroup.sql
+
+mysqldump -u root -proot -h abf-dev-mysql abf2_feb26 ves_megamenu_menu_log < ves_megamenu_menu_log.sql
+
+mysqldump -u root -proot -h abf-dev-mysql abf2_feb26 ves_megamenu_menu_store < ves_megamenu_menu_store.sql
+
+mysqldump -u root -proot -h abf-dev-mysql abf2_feb26 plumbase_product < plumbase_product.sql
+
+mysqldump -u root -proot -h abf-dev-mysql abf2_feb26 plumrocket_estimateddelivery_order_item < plumrocket_estimateddelivery_order_item.sql
+
+mysqldump -u root -proot -h abf-dev-mysql abf2_feb26 core_config_data < core_config_data.sql
+
+
